@@ -1,3 +1,70 @@
+# Tugas 8
+
+## Apa kegunaan `const` di Flutter? Jelaskan apa keuntungan ketika menggunakan `const` pada kode Flutter. Kapan sebaiknya kita menggunakan `const`, dan kapan sebaiknya tidak digunakan?
+
+Dalam Flutter, `const` digunakan untuk mendeklarasikan widget atau objek yang bersifat tetap (immutable) selama siklus hidup aplikasi. Ini berarti bahwa setiap elemen yang dideklarasikan dengan `const` akan selalu memiliki nilai yang sama dan tidak akan berubah. Keuntungan menggunakan `const` pada flutter adalah:
+
+1. Mengurangi penggunaan memori: Objek `const` hanya dibuat satu kali dan disimpan dalam memori aplikasi. Jika objek dengan nilai yang sama digunakan beberapa kali, Flutter tidak perlu membuat objek baru setiap kali, tetapi cukup merujuk ke objek `const` yang sama.
+2. Optimasi performa: Flutter dapat menghindari proses rendering ulang pada widget `const`, karena tahu bahwa nilai widget tersebut tidak akan berubah. Ini mengurangi kebutuhan akan proses rebuild, yang pada gilirannya meningkatkan kinerja aplikasi.
+3. Kode lebih bersih dan terstruktur: Dengan `const`, kita dapat mendeklarasikan elemen-elemen statis di satu tempat, sehingga kode menjadi lebih terstruktur dan mudah dikelola. Selain itu, widget `const` tidak perlu masuk ke dalam proses state management, karena tidak akan pernah mengalami perubahan.
+
+`const` sebaiknya digunakan pada widget atau objek yang statis dan tidak akan berubah.
+
+`const` sebaiknya tidak digunakan pada widget atau variabel yang mungkin mengalami perubahan saat aplikasi dijalankan. Selain itu, `const` juga tidak dapat digunakan untuk nilai yang diperolah saat runtime.
+
+## Jelaskan dan bandingkan penggunaan Column dan Row pada Flutter. Berikan contoh implementasi dari masing-masing layout widget ini!
+
+Column adalah layout widget yang digunakan untuk menyusun widget secara vertikal. Berikut contoh implementasi dari Column:
+
+```dart
+Column(
+  // Menyusun ikon dan teks di tengah kartu.
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: [
+    Icon(
+      item.icon,
+      color: Colors.white,
+      size: 30.0,
+    ),
+    const Padding(padding: EdgeInsets.all(3)),
+    Text(
+      item.name,
+      textAlign: TextAlign.center,
+      style: const TextStyle(color: Colors.white),
+    ),
+  ],
+)
+```
+
+Sedangkan Row adalah widget yang digunakan untuk menyusun widget secara horizontal. Berikut contoh implementasi dari Row:
+
+```dart
+Row(
+  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  children: [
+    InfoCard(title: 'NPM', content: npm),
+    InfoCard(title: 'Name', content: name),
+    InfoCard(title: 'Class', content: className),
+  ],
+)
+```
+
+## Sebutkan apa saja elemen input yang kamu gunakan pada halaman form yang kamu buat pada tugas kali ini. Apakah terdapat elemen input Flutter lain yang tidak kamu gunakan pada tugas ini? Jelaskan!
+
+Elemen input yang digunakan pada halaman form pada tugas ini adalah `TextFormField`. Terdapat elemen input Flutter lain yang tidak digunakan pada tugas ini, beberapa diantaranya:
+
+1. `Checkbox`: digunakan untuk input pilihan berbentuk kotak centang.
+2. `Radio`: digunakan untuk memilih salah satu dari beberapa opsi.
+3. `Slider`: digunakan untuk memilih nilai dari rentang tertentu, misalnya memilih tingkat volume atau nilai skala lainnya.
+
+## Bagaimana cara kamu mengatur tema (theme) dalam aplikasi Flutter agar aplikasi yang dibuat konsisten? Apakah kamu mengimplementasikan tema pada aplikasi yang kamu buat?
+
+Kita dapat mengatur tema dalam aplikasi Flutter dengan menggunakan widget `ThemeData` pada `main.dart`. Di dalamnya kita dapat mendeklarasikan color scheme yang dapat digunakan oleh seluruh widget pada aplikasi agar setiap widget memiliki pewarnaan yang konsisten. Saya sudah mengimplementasikan tema pada aplikasi ini.
+
+## Bagaimana cara kamu menangani navigasi dalam aplikasi dengan banyak halaman pada Flutter?
+
+Pada aplikasi Flutter, kita dapat menggunakan widget `Navigator` untuk menangani navigasi halaman. `Navigator` akan mengelola stack route yang menyimpan urutan halaman-halaman yang dikunjungi pengguna. Terdapat beberapa fungsi dari `Navigator` yang dapat digunakan untuk melakukan navigasi, seperti `push()` untuk menambahkan suatu route ke dalam stack, `pop()` untuk menghapus route di paling atas stack (halaman yang sedang dilihat oleh pengguna), `pushReplacement()` untuk menghapus route di paling atas stack dan menggantinya dengan suatu route baru. Selain dari 3 fungsi ini, terdapat juga fungsi-fungsi lain pada `Navigator` yang dapat digunakan sesuai kebutuhan.
+
 # Tugas 7
 
 ## Jelaskan apa yang dimaksud dengan stateless widget dan stateful widget, dan jelaskan perbedaan dari keduanya.
