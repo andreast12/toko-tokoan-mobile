@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:toko_tokoan/screens/list_product.dart';
 import 'package:toko_tokoan/screens/menu.dart';
 import 'package:toko_tokoan/screens/product_form.dart';
 
@@ -51,7 +52,7 @@ class LeftDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.mood),
+            leading: const Icon(Icons.add_rounded),
             title: const Text('Tambah Produk'),
             // Bagian redirection ke ProductFormPage
             onTap: () {
@@ -60,6 +61,17 @@ class LeftDrawer extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => const ProductFormPage(),
                   ));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.sell_rounded),
+            title: const Text('Daftar Produk'),
+            onTap: () {
+              // Route menu ke halaman product
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ProductPage()),
+              );
             },
           ),
         ],
